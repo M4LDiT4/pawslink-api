@@ -1,0 +1,34 @@
+{
+  "name": "pawslink-api",
+  "version": "1.0.0",
+  "description": "An API that aims to bridge the Pawslink UI with the pawslink services.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/M4LDiT4/pawslink-api.git"
+  },
+  "keywords": [
+    "api",
+    "pawslink"
+  ],
+  "author": "Jonathan Calugas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/M4LDiT4/pawslink-api/issues"
+  },
+  "homepage": "https://github.com/M4LDiT4/pawslink-api#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
