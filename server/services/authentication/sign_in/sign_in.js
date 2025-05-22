@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
 const encryptionService = require("../../../utils/encryption");
-const tokenGenerator = require("../../../services/tokenGeneration");
+const tokenGenerator = require("../../../utils/tokenGeneration");
 const dateUtil = require("../../../utils/date");
 
 module.exports = async ({ email, password }) => {

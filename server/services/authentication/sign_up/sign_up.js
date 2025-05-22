@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const UserModel = require('../../../models').UserModel;
 const RefreshToken = require("../../../models").RefreshToken;
 const encryption = require("../../../utils/encryption");
-const tokenGenerator = require("../../../services/tokenGeneration");
+const tokenGenerator = require("../../../utils/tokenGeneration");
 const dateUtil = require("../../../utils/date");
 
 module.exports = async({
