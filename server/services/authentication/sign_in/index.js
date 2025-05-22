@@ -13,7 +13,7 @@ module.exports = async ({query}) => {
         password: query.password
     })
     return {
-        asyncResponse : tokens,
+        data : tokens,
         query
     }   
 }

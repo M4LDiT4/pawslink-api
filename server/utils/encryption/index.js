@@ -6,11 +6,12 @@ class BcryptService {
     if (BcryptService.instance) {
       return BcryptService.instance;
     }
-    this.saltRounds = process.env.SALT_ROUNDS;
+    this.saltRounds = parseInt(process.env.SALT_ROUNDS);
     BcryptService.instance = this;
   }
 
   async hash(password) {
+    console.log(this.saltRounds)
     return bcrypt.hash(password, this.saltRounds);
   }
 

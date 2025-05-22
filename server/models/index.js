@@ -14,7 +14,7 @@ for (const fileName in models) {
    try {
       exportModels[fileName] = mongoose.model(models[fileName]);
    } catch (e) {
-      exportModels[fileName] = models[fileName][mongoose.Schema];
+      exportModels[fileName] = models[fileName](mongoose, Schema);
    }
 }
 

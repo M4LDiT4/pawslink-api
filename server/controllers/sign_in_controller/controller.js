@@ -19,8 +19,10 @@ module.exports = async (req, res, next) => {
       }
 
       const response = await signIn({
-         email: body.email,
-         password: body.password
+         query: {
+            email: body.email,
+            password: body.password
+         }
       });
 
       req.responseData = {
