@@ -1,7 +1,5 @@
-`use strict`
-
 const router = require("express").Router();
 
-require("./sign_in")(router);
+router.use("/auth", require("./authentication"));
 
 module.exports = router;

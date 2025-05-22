@@ -1,7 +1,5 @@
 `use strict`
-const { Schema } = require("mongoose");
-const mongoose = require("mongoose");
-
+const dateUtil = require("../utils/date")
 module.exports = (mongoose, Schema) => {
     const schema = new Schema({
         userId: {
@@ -16,15 +14,14 @@ module.exports = (mongoose, Schema) => {
         expiresAt : {
             type : Date,
             required : true
-        },
-        createdAt : {
-            type: Date,
-            required : true,
-            default : Date.now
         }
-    });
+        }, { timestamps: true }
+    );
 
-    //add ttl here if it is free 
+    schema.index(
+        {createdAt: 1},
+        {expireAfterSeconds: dateUtil.daysToSeconds(15)}
+    )
 
     return mongoose.model('token', schema);
 }

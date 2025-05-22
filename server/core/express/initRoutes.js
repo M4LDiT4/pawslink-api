@@ -15,12 +15,12 @@ const path = require('path');
 module.exports = (app) => {
    try {
       const router = require(
-         path.join(__dirname, '../', '../', '../', 'server', 'routes', 'api')
+         path.join(__dirname, '../', '../', '../', 'server', 'routes')
       );
-      app.use('/api', router);
+      app.use('/', router);
    } catch (err) {
       console.error('Unable to load api.js in the routes folder.');
-      console.error(e.message || e);
+      console.error(err);
       console.info({});
    }
 };

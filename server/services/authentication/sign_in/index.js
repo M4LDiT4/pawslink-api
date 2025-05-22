@@ -8,12 +8,12 @@
 const signIn = require("./sign_in");
 
 module.exports = async ({query}) => {
-    const token = await signIn({
+    const tokens = await signIn({
         email: query.email,
         password: query.password
     })
     return {
-        asyncResponse : token,
+        asyncResponse : tokens,
         query
     }   
 }

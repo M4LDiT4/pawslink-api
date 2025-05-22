@@ -40,7 +40,6 @@ module.exports = async ({ email, password }) => {
       await session.commitTransaction();
 
       return { accessToken, refreshToken };
-
    } catch (e) {
       await session.abortTransaction();
       throw new Error(e.message);
