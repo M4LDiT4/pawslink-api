@@ -7,8 +7,8 @@
  * @param {Object} router -> Express router instance
  */
 
-const signUpController = require("../../controllers/sign_up_controller");
+const controller = require("../../controllers/authentication").signUp;
 
 module.exports = (router) => {
-   router.post('/sign-up', signUpController.controller);
+   router.post('/sign-up', controller);
 };

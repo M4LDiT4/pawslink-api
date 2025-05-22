@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
 const encryptionService = require("../../../utils/encryption");
+const tokenGenerator = require("../../../services/tokenGeneration");
 const dateUtil = require("../../../utils/date");
 
 module.exports = async ({ email, password }) => {
@@ -25,8 +26,8 @@ module.exports = async ({ email, password }) => {
          email: existingUser.email,
       };
 
-      const accessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
-      const refreshToken = jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "7d" });
+      const accessToken = tokenGenerator.generateAccessKey(payload, '15m');
+      const refreshToken = tokenGenerator.generateRefreshKey(payload, '7d');
 
       const expiresAt = dateUtil.addDays(7);
       const newRefToken = new RefreshToken({

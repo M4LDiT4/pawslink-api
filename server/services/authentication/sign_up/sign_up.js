@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 const UserModel = require('../../../models').UserModel;
 const RefreshToken = require("../../../models").RefreshToken;
 const encryption = require("../../../utils/encryption");
+const tokenGenerator = require("../../../services/tokenGeneration");
 const dateUtil = require("../../../utils/date");
 
 module.exports = async({
@@ -31,8 +32,8 @@ module.exports = async({
             email: saveUser.email,
         };
 
-        const accessToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '15m' });
-        const refreshToken = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "7d" });
+        const accessToken = tokenGenerator.generateAccessKey(payload, '15m');
+        const refreshToken = tokenGenerator.generateRefreshKey(payload, '7d');
 
         const expiresAt = dateUtil.addDays(7);
         const newRefToken = new RefreshToken({

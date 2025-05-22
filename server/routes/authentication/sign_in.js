@@ -8,8 +8,8 @@
  * @param {Object} router -> Express router instance
  */
 
-const signIn = require("../../controllers/sign_in_controller")
+const controller = require("../../controllers/authentication").signIn;
 
 module.exports = (router) => {
-   router.post('/sign-in', signIn.controller);
+   router.post('/sign-in', controller);
 };
