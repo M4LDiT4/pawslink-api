@@ -6,7 +6,7 @@ const dateUtil = require('../../../utils/date');
 module.exports = async (token, userId, session) => {
    const newToken = new TokenModel({
       userId: userId,
-      refreshToke: token,
+      refreshToken: token,
       expiresAt: dateUtil.addDays(15),
    });
 

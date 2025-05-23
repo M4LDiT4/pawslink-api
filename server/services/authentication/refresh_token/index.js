@@ -26,7 +26,7 @@ module.exports = async ({ query }) => {
       };
 
       const accessToken = tokenGenerator.generateAccessKey(user, '15m');
-      const newRefToken = tokenGenerator.getRefreshToken(user, '7d');
+      const newRefToken = tokenGenerator.generateRefreshKey(user, '7d');
 
       await saveToken(newRefToken, deletedToken.userId, session);
 
