@@ -1,4 +1,4 @@
-`use strict`
+`use strict`;
 
 /**
  * @module SignIn
@@ -8,7 +8,7 @@
  * @param {Object} router -> Express router instance
  */
 
-const controller = require("../../controllers/authentication").signIn;
+const controller = require('../../controllers/authentication').signIn;
 
 module.exports = (router) => {
    router.post('/sign-in', controller);

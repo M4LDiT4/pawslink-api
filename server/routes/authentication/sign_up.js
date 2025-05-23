@@ -1,4 +1,4 @@
-`use strict`
+`use strict`;
 /**
  * @module SignUp
  * @description Endpoint for user sign up
@@ -7,7 +7,7 @@
  * @param {Object} router -> Express router instance
  */
 
-const controller = require("../../controllers/authentication").signUp;
+const controller = require('../../controllers/authentication').signUp;
 
 module.exports = (router) => {
    router.post('/sign-up', controller);

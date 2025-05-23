@@ -1,19 +1,19 @@
-`use strict`
+`use strict`;
 
 /**
- * @module SignIn 
+ * @module SignIn
  * @description a module for the sign in logic
- * @returns {Object} response -> returns an asyncResposne with the given query 
+ * @returns {Object} response -> returns an asyncResposne with the given query
  */
-const signIn = require("./sign_in");
+const signIn = require('./sign_in');
 
-module.exports = async ({query}) => {
-    const tokens = await signIn({
-        email: query.email,
-        password: query.password
-    })
-    return {
-        data : tokens,
-        query
-    }   
-}
+module.exports = async ({ query }) => {
+   const tokens = await signIn({
+      email: query.email,
+      password: query.password,
+   });
+   return {
+      data: tokens,
+      query,
+   };
+};

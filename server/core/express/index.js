@@ -15,10 +15,10 @@
 
 const express = require('express');
 const helmet = require('helmet');
-const compression = require("compression");
-const cors = require("cors");
-const morgan = require("morgan");
-
+const compression = require('compression');
+const cors = require('cors');
+const morgan = require('morgan');
+const cookieParser = require("cookie-parser");
 
 module.exports = () => {
    let app = express();
@@ -28,7 +28,7 @@ module.exports = () => {
    app.use(compression());
    app.use(cors());
    app.use(morgan('dev'));
-
+   app.use(cookieParser());
 
    require('./initRoutes')(app);
    require('./generateApiResponse')(app);

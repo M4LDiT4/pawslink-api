@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const models = {
    UserModel: require('./user'),
-   RefreshToken: require("./token"),
+   RefreshToken: require('./token'),
 };
 
 let exportModels = {};

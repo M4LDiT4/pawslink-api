@@ -1,13 +1,13 @@
-'use-strict'
+'use-strict';
 
 const UserModel = require('../../../models').UserModel;
-const RefreshToken = require("../../../models").RefreshToken;
+const RefreshToken = require('../../../models').RefreshToken;
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
-const encryptionService = require("../../../utils/encryption");
-const tokenGenerator = require("../../../utils/tokenGeneration");
-const dateUtil = require("../../../utils/date");
+const encryptionService = require('../../../utils/encryption');
+const tokenGenerator = require('../../../utils/tokenGeneration');
+const dateUtil = require('../../../utils/date');
 
 module.exports = async ({ email, password }) => {
    const session = await mongoose.startSession();
@@ -17,7 +17,7 @@ module.exports = async ({ email, password }) => {
       const existingUser = await UserModel.findOne({ email }).session(session);
       if (!existingUser) throw new Error(`User not found`);
 
-      if(!encryptionService.compare(password, existingUser.password)){
+      if (!encryptionService.compare(password, existingUser.password)) {
          throw new Error(`User credentials do not match`);
       }
 
@@ -42,7 +42,9 @@ module.exports = async ({ email, password }) => {
 
       return { accessToken, refreshToken };
    } catch (e) {
-      await session.abortTransaction();
+      if(session.inTransaction){
+         await session.abortTransaction();
+      }
       throw new Error(e.message);
    } finally {
       session.endSession();

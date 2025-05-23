@@ -1,6 +1,6 @@
-const router = require("express").Router();
+const router = require('express').Router();
 
-router.use("/", require("./api"));
-router.use("/auth", require("./authentication"));
+router.use('/', require('./api'));
+router.use('/auth', require('./authentication'));
 
 module.exports = router;
