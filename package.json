@@ -1,34 +1,50 @@
 {
-  "name": "pawslink-api",
-  "version": "1.0.0",
-  "description": "An API that aims to bridge the Pawslink UI with the pawslink services.",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/M4LDiT4/pawslink-api.git"
-  },
-  "keywords": [
-    "api",
-    "pawslink"
-  ],
-  "author": "Jonathan Calugas",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/M4LDiT4/pawslink-api/issues"
-  },
-  "homepage": "https://github.com/M4LDiT4/pawslink-api#readme",
-  "dependencies": {
-    "chalk": "^4.1.2",
-    "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "mongoose": "^8.14.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.10"
-  }
+   "name": "pawslink-api",
+   "version": "1.0.0",
+   "description": "An API that aims to bridge the Pawslink UI with the pawslink services.",
+   "main": "index.js",
+   "scripts": {
+      "dev": "nodemon index.js",
+      "start": "node index.js",
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "format": "prettier --write ."
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/M4LDiT4/pawslink-api.git"
+   },
+   "keywords": [
+      "api",
+      "pawslink"
+   ],
+   "author": "Jonathan Calugas",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/M4LDiT4/pawslink-api/issues"
+   },
+   "homepage": "https://github.com/M4LDiT4/pawslink-api#readme",
+   "dependencies": {
+      "bcrypt": "^6.0.0",
+      "chalk": "^4.1.2",
+      "compression": "^1.8.0",
+      "cookie-parser": "^1.4.7",
+      "cors": "^2.8.5",
+      "dotenv": "^16.5.0",
+      "express": "^5.1.0",
+      "fs": "^0.0.1-security",
+      "helmet": "^8.1.0",
+      "joi": "^17.13.3",
+      "jsonwebtoken": "^9.0.2",
+      "mime-type": "^5.0.3",
+      "mongoose": "^8.14.1",
+      "morgan": "^1.10.0",
+      "multer": "^2.0.0",
+      "stream": "^0.0.3"
+   },
+   "devDependencies": {
+      "@eslint/js": "^9.27.0",
+      "globals": "^16.1.0",
+      "nodemon": "^3.1.10",
+      "prettier": "^3.5.3"
+   }
 }
