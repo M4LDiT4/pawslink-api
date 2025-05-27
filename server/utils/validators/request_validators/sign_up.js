@@ -8,4 +8,6 @@ const schema = joi.object({
    username: joi.string().alphanum().required(),
 });
 
-module.exports = schema;
+module.exports = (args) => {
+   return schema.validate(args);
+};

@@ -15,7 +15,7 @@ module.exports = async (req, res, next) => {
          return next();
       }
       const body = req.body;
-      const { error, value } = requestValidator.validate(body);
+      const { error, value } = requestValidator(body);
       if (error) {
          req.responseData = {
             statusCode: 400,
