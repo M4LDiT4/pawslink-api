@@ -1,16 +1,16 @@
-const tokenGenerator = require ("../../utils/tokenGeneration")
+const tokenGenerator = require('../../utils/tokenGeneration');
 
 module.exports = async (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1]; // "Bearer <token>"
-  
-    if (!token) return res.sendStatus(401); 
+   const authHeader = req.headers['authorization'];
+   const token = authHeader && authHeader.split(' ')[1]; // "Bearer <token>"
 
-    tokenGenerator.verifyAccessToken(token, (err, user) => {
-        if(err) return res.sendStatus(403);
+   if (!token) return res.sendStatus(401);
 
-        req.user = user;
+   tokenGenerator.verifyAccessToken(token, (err, user) => {
+      if (err) return res.sendStatus(403);
 
-        return next();
-    });
-}
+      req.user = user;
+
+      return next();
+   });
+};

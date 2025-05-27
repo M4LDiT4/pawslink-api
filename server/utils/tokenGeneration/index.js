@@ -24,9 +24,9 @@ class TokenGenerationService {
 
    verifyAccessToken(accessToken, callback) {
       if (callback && typeof callback === 'function') {
-        return jwt.verify(accessToken, this.accessKey, callback);
+         return jwt.verify(accessToken, this.accessKey, callback);
       } else {
-        return jwt.verify(accessToken, this.accessKey);
+         return jwt.verify(accessToken, this.accessKey);
       }
    }
 }

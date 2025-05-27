@@ -39,7 +39,7 @@ module.exports = async ({ query }) => {
          query: query,
       };
    } catch (err) {
-      if(session.inTransaction){
+      if (session.inTransaction) {
          await session.abortTransaction();
       }
       throw new Error(err.message || err);

@@ -18,7 +18,7 @@ const helmet = require('helmet');
 const compression = require('compression');
 const cors = require('cors');
 const morgan = require('morgan');
-const cookieParser = require("cookie-parser");
+const cookieParser = require('cookie-parser');
 
 module.exports = () => {
    let app = express();
