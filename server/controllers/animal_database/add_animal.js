@@ -12,6 +12,13 @@ module.exports = async (req, res, next) =>{
          return next();
       }
       const body = req.body;
+      //parse to json the fields with list or json values
+      body.coatColor = JSON.parse(body.coatColor);
+      body.notes = JSON.parse(body.notes);
+      body.traitsAndPersonality =  JSON.parse(body.traitsAndPersonality);
+      body.vaxHistory = JSON.parse(body.vaxHistory);
+      body.medHistory = JSON.parse(body.medHistory);
+      
       const {error, value} = validator(body);
       if(error){
          req.responseData = {
@@ -24,7 +31,7 @@ module.exports = async (req, res, next) =>{
       }
       
       const response = await addAnimalHandler({
-         value,
+         animalData: value,
          imgFile: req.file
       });
 

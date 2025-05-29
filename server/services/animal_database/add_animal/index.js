@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 
 const addAnimal = require("./add_animal");
 const cloudinaryService = require("../../../services/cloudinary");
+cloudinaryService.init();
 const updateImgString = require('./insert_img_url');
 module.exports = async ({
    animalData,
@@ -11,6 +12,8 @@ module.exports = async ({
 })=>{
    const session = await mongoose.startSession();
    try{
+      console.log(animalData);
+      session.startTransaction();
       let newAnimal = await addAnimal(session, animalData);
 
       if(imgFile && imgFile.buffer){
@@ -26,6 +29,7 @@ module.exports = async ({
       if(session.inTransaction){
          await session.abortTransaction();
       }
+      throw(err);
    }finally{
       session.endSession();
    }
