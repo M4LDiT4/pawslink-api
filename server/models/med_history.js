@@ -10,7 +10,7 @@ module.exports = (mongoose, Schema) => {
       medicationDate: {
          type: Date,
          required: true,
-         default: Date.now(),
+         default: Date.now,
       },
       medicationFor: {
          type: String,

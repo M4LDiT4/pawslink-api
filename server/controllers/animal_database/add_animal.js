@@ -1,4 +1,5 @@
 const validator = require("../../utils/validators/request_validators/add_animal");
+const addAnimalHandler = require("../../services/animal_database/add_animal");
 module.exports = async (req, res, next) =>{
    try{
       if(!req.body || Object.keys(req.body).length === 0){
@@ -21,6 +22,19 @@ module.exports = async (req, res, next) =>{
          }
          return next(); 
       }
+      
+      const response = await addAnimalHandler({
+         value,
+         imgFile: req.file
+      });
+
+      req.responseData ={
+         statusCode: 200,
+         body: response
+      };
+
+      return next();
+
    }catch (err){
       req.responseData = {
          statusCode: 404,

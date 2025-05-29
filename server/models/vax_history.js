@@ -10,7 +10,7 @@ module.exports = (mongoose, Schema) => {
       vaccinationDate: {
          type: Schema.Types.Date,
          required: true,
-         default: Date.now(),
+         default: Date.now,
       },
       vaccinationFor: {
          type: String,
