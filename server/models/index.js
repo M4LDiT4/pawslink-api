@@ -6,6 +6,9 @@ const Schema = mongoose.Schema;
 const models = {
    UserModel: require('./user'),
    RefreshToken: require('./token'),
+   AnimalModel: require('./animal'),
+   MedHistoryModel : require('./med_history'),
+   VaxHistoryModel : require('./vax_history'),
 };
 
 let exportModels = {};

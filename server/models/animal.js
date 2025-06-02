@@ -8,6 +8,7 @@ module.exports = (mongoose, Schema) => {
       },
       species: {
          type: String,
+         enum: ['dog', 'cat', 'unknown'],
          required: true,
          trim: true,
       },
@@ -21,7 +22,9 @@ module.exports = (mongoose, Schema) => {
       },
       sex: {
          type: String,
+         enum: ['male', 'female', 'unknown'],
          required: true,
+         trim: true,
       },
       status: {
          type: String,
@@ -30,6 +33,7 @@ module.exports = (mongoose, Schema) => {
       coatColor: {
          type: [String],
          required: true,
+         default: [],
       },
       notes: {
          type: [String],
@@ -39,6 +43,9 @@ module.exports = (mongoose, Schema) => {
          type: [String],
          default: [],
       },
+      imgUrl: {
+         type: String,
+      }
    });
 
    schema.virtual(`vaccinations`, {
