@@ -19,6 +19,8 @@ module.exports = (mongoose, Schema) => {
          required: true,
          default: false,
       },
+   },{
+      timestamps: true,
    });
 
    return mongoose.model('user', schema);
