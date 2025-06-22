@@ -9,6 +9,7 @@ const models = {
    AnimalModel: require('./animal'),
    MedHistoryModel : require('./med_history'),
    VaxHistoryModel : require('./vax_history'),
+   ActivityLogModel : require('./activity_log'),
 };
 
 let exportModels = {};

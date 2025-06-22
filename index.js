@@ -44,7 +44,7 @@ const setupApp = (dbConnection) => {
    // Otherwise, setup express app
    const app = require('./server/core/express')();
 
-   app.listen(config.port, () => {
+   app.listen(config.port, '0.0.0.0', () => {
       console.info('Application started!');
       console.info('----------------------------------------------');
       console.info(

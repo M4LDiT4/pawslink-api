@@ -28,7 +28,6 @@
 const AnimalModel = require("../../../models").AnimalModel;
 const MedHistoryModel = require("../../../models").MedHistoryModel;
 const VaxHistoryModel = require("../../../models").VaxHistoryModel;
-
 module.exports = async (session, animalData) => {
    const animal = new AnimalModel({
       name: animalData.name,
@@ -61,6 +60,7 @@ module.exports = async (session, animalData) => {
    }));
 
    await MedHistoryModel.insertMany(medications, {session});
+
 
    return newAnimal;
 }

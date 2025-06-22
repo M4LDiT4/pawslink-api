@@ -46,6 +46,8 @@ module.exports = (mongoose, Schema) => {
       imgUrl: {
          type: String,
       }
+   },{
+      timestamps: true
    });
 
    schema.virtual(`vaccinations`, {

@@ -11,6 +11,18 @@ module.exports = async (req, res, next) =>{
          }
          return next();
       }
+
+      if(!req.user ||req.user == null){
+         req.responseData = {
+            statusCode: 401,
+            body: {
+               error: 'Invalid User Detected'
+            }
+         }
+         return next();
+      }
+
+      console.log(`user is ${JSON.stringify(req.user)}`);
       const body = req.body;
       //parse to json the fields with list or json values
       body.coatColor = JSON.parse(body.coatColor);
@@ -32,6 +44,7 @@ module.exports = async (req, res, next) =>{
       
       const response = await addAnimalHandler({
          animalData: value,
+         user: req.user,
          imgFile: req.file
       });
 
