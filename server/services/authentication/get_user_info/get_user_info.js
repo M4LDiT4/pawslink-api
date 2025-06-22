@@ -1,8 +1,8 @@
 const UserModel = require("../../../models").UserModel;
-const types = require("mongoose").ObjectId;
+const ObjectId = require("mongoose").Types.ObjectId;
 module.exports = async (userId, email) => {
    const user = await UserModel.find({
-      _id: new types.ObjectId(userId),
+      _id: new ObjectId(userId),
       email: email
    });
    return user;

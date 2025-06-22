@@ -1,4 +1,4 @@
-const objectId = require('mongoose').ObjectId;
+const objectId = require('mongoose').Types.ObjectId;
 const ActivityLogModel = require('../../models').ActivityLogModel;
 /**
  * @description creates a new mongodb document for activity log

@@ -9,8 +9,8 @@ const insertActLog = require("../../activity_log");
 const { date } = require("joi");
 module.exports = async ({
    animalData,
-   imgFile,
    user,
+   imgFile,
 })=>{
    const session = await mongoose.startSession();
    try{
@@ -24,8 +24,6 @@ module.exports = async ({
          newAnimal = updatedAnimal
       }
 
-      await session.commitTransaction();
-
       const actLogData = {
          userId: user.userId,
          action: "CREATE",
@@ -34,6 +32,8 @@ module.exports = async ({
       };
 
       await insertActLog(session, actLogData);
+
+      await session.commitTransaction();
       
       return newAnimal;
    }catch (err){
