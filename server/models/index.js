@@ -7,9 +7,9 @@ const models = {
    UserModel: require('./user'),
    RefreshToken: require('./token'),
    AnimalModel: require('./animal'),
-   MedHistoryModel : require('./med_history'),
-   VaxHistoryModel : require('./vax_history'),
-   ActivityLogModel : require('./activity_log'),
+   MedHistoryModel: require('./med_history'),
+   VaxHistoryModel: require('./vax_history'),
+   ActivityLogModel: require('./activity_log'),
 };
 
 let exportModels = {};

@@ -2,10 +2,10 @@ const jwt = require('jsonwebtoken');
 
 /**
  * Singleton service for generating and verifying JWT tokens.
- * 
+ *
  * @class TokenGenerationService
- * @singleton  
- * 
+ * @singleton
+ *
  * @author Jonathan Calugas
  * @description This service provides methods to generate access and refresh tokens,
  *              verify access tokens, and verify refresh tokens. It uses environment
@@ -21,7 +21,7 @@ class TokenGenerationService {
    }
 
    /**
-    * 
+    *
     * @param {*} payload data that will be encoded in the token
     * @description payload should contain the user id and other information that will be used to identify the user
     * @param {*} expiration the amount of time the token will be valid
@@ -36,9 +36,9 @@ class TokenGenerationService {
    }
 
    /**
-    * 
+    *
     * @param {*} payload data that will be encoded in the refresh token
-    * @description payload should contain the user id and other information that will be used to identify the user   
+    * @description payload should contain the user id and other information that will be used to identify the user
     * @param {*} expiration the amount of time the refresh token will be valid
     * @description expiration should be a string that is parsable by the jsonwebtoken library, e.g. "1h", "2d", etc.
     * @author Jonathan Calugas
@@ -51,7 +51,7 @@ class TokenGenerationService {
       return jwt.sign(payload, this.refreshKey, { expiresIn: expiration });
    }
    /**
-    * 
+    *
     * @param {*} oldToken the refresh token that will be verified
     * @description oldToken should be a string that is a valid JWT refresh token
     * @author Jonathan Calugas
@@ -66,7 +66,7 @@ class TokenGenerationService {
    }
 
    /**
-    * 
+    *
     * @param {*} accessToken the access token that will be verified
     * @description accessToken should be a string that is a valid JWT access token
     * @param {*} callback optional callback function that will be called with the decoded payload or an error

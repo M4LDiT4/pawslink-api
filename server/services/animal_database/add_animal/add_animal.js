@@ -25,9 +25,9 @@
  *    } animalData.medHistory -> history of medications that the animal has
  * @returns {Promise<Object>} -> animal document from mongodb
  */
-const AnimalModel = require("../../../models").AnimalModel;
-const MedHistoryModel = require("../../../models").MedHistoryModel;
-const VaxHistoryModel = require("../../../models").VaxHistoryModel;
+const AnimalModel = require('../../../models').AnimalModel;
+const MedHistoryModel = require('../../../models').MedHistoryModel;
+const VaxHistoryModel = require('../../../models').VaxHistoryModel;
 module.exports = async (session, animalData) => {
    const animal = new AnimalModel({
       name: animalData.name,
@@ -38,20 +38,18 @@ module.exports = async (session, animalData) => {
       status: animalData.status,
       coatColor: animalData.coatColor,
       notes: animalData.notes,
-      traitsAndPersonality : animalData.traitsAndPersonality
+      traitsAndPersonality: animalData.traitsAndPersonality,
    });
 
-   const newAnimal = await animal.save({session});
+   const newAnimal = await animal.save({ session });
 
-   const vaccinations = animalData.vaxHistory.map((item) => (
-      {
-         animal: newAnimal._id,
-         vaccinationDate: item.date,
-         vaccinationFor: item.description,
-      }
-   ));
+   const vaccinations = animalData.vaxHistory.map((item) => ({
+      animal: newAnimal._id,
+      vaccinationDate: item.date,
+      vaccinationFor: item.description,
+   }));
 
-   await VaxHistoryModel.insertMany(vaccinations, {session});
+   await VaxHistoryModel.insertMany(vaccinations, { session });
 
    const medications = animalData.medHistory.map((item) => ({
       animal: newAnimal._id,
@@ -59,8 +57,7 @@ module.exports = async (session, animalData) => {
       medicationFor: item.description,
    }));
 
-   await MedHistoryModel.insertMany(medications, {session});
-
+   await MedHistoryModel.insertMany(medications, { session });
 
    return newAnimal;
-}
+};
