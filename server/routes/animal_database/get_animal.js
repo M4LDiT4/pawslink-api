@@ -4,5 +4,9 @@ module.exports = (router) => {
    router.get(
       '/animal/:id',
       controllerRegistry.getAnimal
-   )
+   );
+   router.get(
+      '/animal',
+      controllerRegistry.getAnimal
+   );
 }
