@@ -1,4 +1,4 @@
-`use strict`
+`use strict`;
 
 const joi = require('joi');
 
@@ -12,14 +12,18 @@ const schema = joi.object({
    coatColor: joi.array().items(joi.string()).default([]),
    notes: joi.array().items(joi.string()).default([]),
    traitsAndPersonality: joi.array().items(joi.string()).default([]),
-   vaxHistory: joi.array().items(joi.object({
-      date: joi.date().required(),
-      description: joi.string().required(),
-   })),
-   medHistory: joi.array().items(joi.object({
-      date: joi.date().required(),
-      description: joi.string().required(),
-   })),  
+   vaxHistory: joi.array().items(
+      joi.object({
+         date: joi.date().required(),
+         description: joi.string().required(),
+      })
+   ),
+   medHistory: joi.array().items(
+      joi.object({
+         date: joi.date().required(),
+         description: joi.string().required(),
+      })
+   ),
 });
 
 module.exports = (args) => {

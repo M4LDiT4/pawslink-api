@@ -7,24 +7,24 @@ const ActivityLogModel = require('../../models').ActivityLogModel;
  * @param {*} action action by the user; limited to CREATE, UPDATED and DELETE
  * @param {*} collectionName the name of the collection where the action is done
  * @param {*} documentId id of the document that is affected by the action
- * @returns 
+ * @returns
  */
 
 module.exports = async (
-   session, 
-   userId, 
-   action, 
-   collectionName, 
-   documentId) => 
-{
+   session,
+   userId,
+   action,
+   collectionName,
+   documentId
+) => {
    const actLog = new ActivityLogModel({
       userId: new objectId(userId),
       action: action,
       collectionName: collectionName,
-      documentId: new objectId(documentId)
+      documentId: new objectId(documentId),
    });
 
    await actLog.save(session);
 
    return;
-}
+};

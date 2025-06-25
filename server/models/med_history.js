@@ -15,7 +15,7 @@ module.exports = (mongoose, Schema) => {
       medicationFor: {
          type: String,
          required: true,
-      }
+      },
    });
 
    return mongoose.model(`Medication`, schema);
