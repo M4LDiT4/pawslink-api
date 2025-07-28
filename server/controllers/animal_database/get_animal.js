@@ -4,6 +4,7 @@ const AnimalModel = require("../../models").AnimalModel;
 
 
 module.exports = async (req, res, next) => {
+   //post: return appropriate response (result or error)
    try {
       const { id } = req.params;
       const { search, searchBy } = req.query;

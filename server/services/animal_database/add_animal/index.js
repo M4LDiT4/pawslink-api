@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const addAnimal = require('./add_animal');
 const cloudinaryService = require('../../../services/cloudinary');
-cloudinaryService.init();
 const updateImgString = require('./insert_img_url');
 const insertActLog = require('../../activity_log');
 const { date } = require('joi');
