@@ -3,6 +3,7 @@ const EventModel = require("../../../models").EventModel;
 module.exports = async({
    page, limit, sort, queryOptions
 }) => {
+   const skip = (page-1) * limit;
    const docCount = await EventModel.countDocuments(queryOptions);
 
    const response = await EventModel.find(queryOptions)

@@ -1,3 +1,4 @@
+const getEventList = require("./get_event");
 
 module.exports = async ({
    page = 1,
@@ -10,4 +11,14 @@ module.exports = async ({
    const sort = {}
    sort[sortBy] = sortDirection;
    
+   const response = await getEventList({
+      page: page,
+      limit: limit,
+      sort: sort,
+      queryOptions: queryOptions
+   })
+
+   return {
+      data: response
+   }
 }

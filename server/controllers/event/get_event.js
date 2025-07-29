@@ -1,6 +1,6 @@
 const generateSearchQuery = require("../../utils/helpers/build_search_query");
 const EventModel = require("../../models").EventModel;
-const getEvent = require("./get_event");
+const getEvent = require("../../services/events/get_event")
 module.exports = async(req, res, next) => {
    try{
       const {id} = req.params;
@@ -44,5 +44,6 @@ module.exports = async(req, res, next) => {
             details: err?.message || err
          }
       }
+      return next();
    }
 }
