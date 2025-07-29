@@ -1,18 +1,4 @@
 `use strict`;
-
-/**
- * @module express
- * @description creates a server with routes and response handling middleware
- * @author Jonathan Calugas
- *
- * @requires express
- * @requires initRoutes
- * @requires generateApiResponse
- * @requires http
- *
- * @returns {object} server - http server
- */
-
 const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
@@ -20,6 +6,12 @@ const cors = require('cors');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 
+/**
+ * @module express
+ * @author Jonathan Calugas
+ * @description generates a customized express object for the server
+ * @returns {Express} the server instance
+ */
 module.exports = () => {
    let app = express();
 

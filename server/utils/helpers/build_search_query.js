@@ -8,6 +8,8 @@
  * @returns 
  */
 module.exports = (Model, search, searchBy) => {
+   //pre: Model is a valid mongoose db
+   //post: a valid search query for the given model (searchBy field is present and is comptible with type of search)
    const query = {}
 
    if(!search || !searchBy) return query;

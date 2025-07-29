@@ -66,4 +66,4 @@ class CloudinaryService {
    }
 }
 
-module.exports = new CloudinaryService();
+module.exports = new CloudinaryService().init();

@@ -10,6 +10,7 @@ const models = {
    MedHistoryModel: require('./med_history'),
    VaxHistoryModel: require('./vax_history'),
    ActivityLogModel: require('./activity_log'),
+   EventModel : require("./event"),
 };
 
 let exportModels = {};

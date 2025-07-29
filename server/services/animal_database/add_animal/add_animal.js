@@ -1,3 +1,7 @@
+const AnimalModel = require('../../../models').AnimalModel;
+const MedHistoryModel = require('../../../models').MedHistoryModel;
+const VaxHistoryModel = require('../../../models').VaxHistoryModel;
+
 /**
  * @module add_animal
  * @author Jonathan Calugas
@@ -25,9 +29,6 @@
  *    } animalData.medHistory -> history of medications that the animal has
  * @returns {Promise<Object>} -> animal document from mongodb
  */
-const AnimalModel = require('../../../models').AnimalModel;
-const MedHistoryModel = require('../../../models').MedHistoryModel;
-const VaxHistoryModel = require('../../../models').VaxHistoryModel;
 module.exports = async (session, animalData) => {
    const animal = new AnimalModel({
       name: animalData.name,
