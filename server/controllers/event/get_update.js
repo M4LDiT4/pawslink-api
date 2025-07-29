@@ -3,6 +3,8 @@ module.exports = async (req, res, next) => {
    try{
       const {timeStamp} = req.query;
 
+      //query the updates via timestamp
+      //if there is no provided timestamp, return error to the client
       if(!timeStamp){
          req.responseData = {
             statusCode: 400,
@@ -28,5 +30,6 @@ module.exports = async (req, res, next) => {
             error: err?.message || err
          }
       }
+      return next();
    }
 }

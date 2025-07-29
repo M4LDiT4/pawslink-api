@@ -25,8 +25,9 @@ module.exports = async (req, res, next) => {
       console.log(`user is ${JSON.stringify(req.user)}`);
       const body = req.body;
 
+      //validate the inputs
       const {error, value} = validator(body);
-
+      //return error if user provided erroneous data
       if(error){
          req.responseData = {
             statusCode: 400,
@@ -56,7 +57,6 @@ module.exports = async (req, res, next) => {
             error: err.message || err
          }
       }
-
       return next();
    }
 }
