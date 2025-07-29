@@ -4,7 +4,7 @@ const authentication = require("../../middlewares/authentication");
 
 module.exports = (router) => {
    router.post('/event',
-      // authentication,
+      authentication,
       singleFileUpload.single('image'),
       controllerRegistry.addEvent
    );

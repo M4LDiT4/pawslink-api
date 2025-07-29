@@ -22,5 +22,7 @@ module.exports = (mongoose, Schema) => {
          type: String, 
          requred: false
       }
-   })  
+   });
+
+   return mongoose.model('Event', schema);
 }

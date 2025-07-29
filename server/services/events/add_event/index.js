@@ -6,7 +6,7 @@ const insertActLog = require("../../activity_log")
 module.exports = async({eventData, user, imgFile}) => {
    const session = await mongoose.startSession();
    try{
-      console.log(`Event data is: ${eventData}`);
+      console.log(JSON.stringify(eventData));
       session.startTransaction();
       let newEvent = await addEvent(session, eventData);
 
@@ -22,16 +22,18 @@ module.exports = async({eventData, user, imgFile}) => {
             newEvent._id,
             imgUrl
          );
-      }
 
+         newEvent = updatedEvent;
+      }
+      console.log(JSON.stringify(user));
       const actLogData = {
-         userId: user.userId,
+         userId: user.UserId,
          action: 'CREATE',
          collectionName: 'Event',
          documentId: newEvent._id
       }
 
-      await insertActLog(actLogData);
+      await insertActLog(session, actLogData);
 
       await session.commitTransaction();
 
@@ -42,6 +44,6 @@ module.exports = async({eventData, user, imgFile}) => {
       }
       throw err;
    } finally{
-      session.endSession
+      session.endSession();
    }
 }

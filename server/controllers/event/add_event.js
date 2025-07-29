@@ -56,5 +56,7 @@ module.exports = async (req, res, next) => {
             error: err.message || err
          }
       }
+
+      return next();
    }
 }

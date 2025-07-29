@@ -1,6 +1,6 @@
 const EventModel = require("../../../models").EventModel;
 
-module.exports = async (session, IdleDeadline, id, imgUrl) => {
+module.exports = async (session, id, imgUrl) => {
    const newEvent = await EventModel.findByIdAndUpdate(
       id,
       {
