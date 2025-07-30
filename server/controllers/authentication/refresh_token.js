@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
       }
       const body = req.body;
 
-      if ((!'refreshToken') in body) {
+      if (!('refreshToken') in body) {
          req.responseData = {
             statusCode: 403,
             body: {
@@ -34,8 +34,10 @@ module.exports = async (req, res, next) => {
 
       return next();
    } catch (err) {
+      console.error(`Error in ${req.path}: ${err.message || err}`);
+
       req.responseData = {
-         statusCode: 404,
+         statusCode: 400,
          body: {
             error: err.message || err,
          },

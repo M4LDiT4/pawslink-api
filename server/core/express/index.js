@@ -25,6 +25,17 @@ module.exports = () => {
    require('./initRoutes')(app);
    require('./generateApiResponse')(app);
 
+   //catch routes that do not exist
+   app.use((req, res, next) => {
+      req.responseData = {
+         statusCode:  404,
+         body:{
+            error: `${req.path} not found`
+         }
+      }
+      return next();
+   });
+
    const server = require('http').createServer(app);
    return server;
 };
