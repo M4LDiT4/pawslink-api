@@ -55,6 +55,7 @@ module.exports = async (req, res, next) => {
 
       return next();
    } catch (err) {
+      console.log(`Error in add animal ${err}`);
       req.responseData = {
          statusCode: 404,
          body: {
