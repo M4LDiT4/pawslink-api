@@ -25,15 +25,19 @@ module.exports = () => {
    require('./initRoutes')(app);
    require('./generateApiResponse')(app);
 
-   //catch routes that do not exist
+      // Catch-all 404 handler
    app.use((req, res, next) => {
-      req.responseData = {
-         statusCode:  404,
-         body:{
-            error: `${req.path} not found`
-         }
-      }
-      return next();
+      res.status(404).json({
+         error: `${req.method} ${req.originalUrl} not found`
+      });
+   });
+
+   // Error handling middleware
+   app.use((err, req, res, next) => {
+      console.error(err.stack);
+      res.status(err.status || 500).json({
+         error: err.message || 'Internal Server Error'
+      });
    });
 
    const server = require('http').createServer(app);
