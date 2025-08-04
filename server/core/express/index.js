@@ -25,6 +25,21 @@ module.exports = () => {
    require('./initRoutes')(app);
    require('./generateApiResponse')(app);
 
+      // Catch-all 404 handler
+   app.use((req, res, next) => {
+      res.status(404).json({
+         error: `${req.method} ${req.originalUrl} not found`
+      });
+   });
+
+   // Error handling middleware
+   app.use((err, req, res, next) => {
+      console.error(err.stack);
+      res.status(err.status || 500).json({
+         error: err.message || 'Internal Server Error'
+      });
+   });
+
    const server = require('http').createServer(app);
    return server;
 };

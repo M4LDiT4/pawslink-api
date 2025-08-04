@@ -3,7 +3,6 @@ const getUserInfo = require('../../services/authentication/get_user_info');
 
 module.exports = async (req, res, next) => {
    const authHeader = req.headers['authorization'];
-   console.log(`Authheaders: ${JSON.stringify(req.headers)}`);
    const token = authHeader && authHeader.split(' ')[1]; // "Bearer <token>"
 
    if (!token) {
