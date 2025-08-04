@@ -66,4 +66,7 @@ class CloudinaryService {
    }
 }
 
-module.exports = new CloudinaryService().init();
+const cloudImageService = new CloudinaryService();
+cloudImageService.init();
+
+module.exports = cloudImageService ;
