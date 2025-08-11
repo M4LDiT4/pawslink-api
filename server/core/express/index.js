@@ -5,6 +5,7 @@ const compression = require('compression');
 const cors = require('cors');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
+const qs = require("qs");
 
 /**
  * @module express
@@ -15,6 +16,7 @@ const cookieParser = require('cookie-parser');
 module.exports = () => {
    let app = express();
 
+   app.set("query parser", (str) => qs.parse(str));
    app.use(express.json());
    app.use(helmet());
    app.use(compression());

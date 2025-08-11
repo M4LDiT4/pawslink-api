@@ -2,12 +2,12 @@ const filterBuilder = require("./filter_builder");
 const fieldValidityChecker = require("./field_validity_checker");
 
 module.exports = (Model, filterConfigs, options = {}) => {
-   try{
-      filterConfigs = JSON.parse(filterConfigs); //try parsing the config
-   }catch(err){
-      console.warn(`Failed to parse filter conditions: ${err}`);
-      return;
-   }
+   // try{
+   //    filterConfigs = JSON.parse(filterConfigs); //try parsing the config
+   // }catch(err){
+   //    console.warn(`Failed to parse filter conditions: ${err}`);
+   //    return;
+   // }
    if (!Model || !Array.isArray(filterConfigs)) {
         console.warn("Either Model or filter configs is missing");
         return ;

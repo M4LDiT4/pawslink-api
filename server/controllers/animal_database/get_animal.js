@@ -8,6 +8,7 @@ const buildFilterOptions = require("../../utils/query/query_builder");
 module.exports = async (req, res, next) => {
    //post: return appropriate response (result or error)
    try {
+      console.log(req.query);
       const { id } = req.params;
       const { filterConfigs } = req.query;
 
