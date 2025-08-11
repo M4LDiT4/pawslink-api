@@ -15,6 +15,7 @@ const AnimalModel = require('../../../models').AnimalModel;
  * }>}
  */
 module.exports = async ({ page, limit, sort, queryOptions }) => {
+   
    const skip = (page - 1) * limit;
 
    const docCount = await AnimalModel.countDocuments(queryOptions);
