@@ -1,4 +1,6 @@
 const getAnimalList = require("./get_animal");
+const filterBuilder = require("../../../utils/query/filter_builder");
+
 /**
  * @module get_animal
  * @author Jonathan Calugas
@@ -20,19 +22,14 @@ const getAnimalList = require("./get_animal");
 module.exports = async({
    page = 1,
    limit = 100,
-   sortOrder = 'desc',
-   sortBy = 'createdAt', //this refers to a field in the mongodb model
-   queryOptions = {}
-}) => {
-
-   const sortDirection = sortOrder === 'asc'? 1 : -1;
-   const sort = {}
-   sort[sortBy] = sortDirection;
+   sortOptions = {'createdAt': 1},
+   filters = {},
+}) => {   
    const response = await getAnimalList({
       page: page,
       limit: limit,
-      sort: sort,
-      queryOptions: queryOptions
+      sort: sortOptions,
+      queryOptions: filters
    });
 
    return {
