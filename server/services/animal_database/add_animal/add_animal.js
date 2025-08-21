@@ -1,7 +1,6 @@
 const AnimalModel = require('../../../models').AnimalModel;
-const MedHistoryModel = require('../../../models').MedHistoryModel;
-const VaxHistoryModel = require('../../../models').VaxHistoryModel;
-
+const AnimalMedicationRecordModel = require('../../../models').AnimalMedicationRecord;
+const AnimalVaccinationRecordModel = require('../../../models').AnimalVaccinationRecord;
 /**
  * @module add_animal
  * @author Jonathan Calugas
@@ -17,16 +16,6 @@ const VaxHistoryModel = require('../../../models').VaxHistoryModel;
  * @param {List<String>} animalData.coatColor -> list of colors the animal has
  * @param {List<String>} animalData.notes -> additional information that cannot be placed on other fields
  * @param {List<String>} animalData.traitsAndPersonality -> list of information about the animals traits and personality
- * @param {List<{
- *       date: Date,
- *       description : String
- *    }>} animalData.vaxHistory -> history of vaccinations that the animal has undergone
- * @param {
- *       List<{
- *          date: Date,
- *          description: String
- *       }>
- *    } animalData.medHistory -> history of medications that the animal has
  * @returns {Promise<Object>} -> animal document from mongodb
  */
 module.exports = async (session, animalData) => {
@@ -44,21 +33,27 @@ module.exports = async (session, animalData) => {
 
    const newAnimal = await animal.save({ session });
 
-   const vaccinations = animalData.vaxHistory.map((item) => ({
-      animal: newAnimal._id,
-      vaccinationDate: item.date,
-      vaccinationFor: item.description,
-   }));
+   const vaxRecords = animalData.vaccinationRecords ? animalData.vaccinationRecords.map((item) => {
+      const record = item;
+      record.animal = newAnimal._id;
+      return record;
+   }) : [];
 
-   await VaxHistoryModel.insertMany(vaccinations, { session });
+   const medRecords = animalData.medicationRecords? animalData.medicationRecords.map((item) => {
+      const record = item;
+      record.animal = newAnimal._id;
+      return record;
+   }) : [];
 
-   const medications = animalData.medHistory.map((item) => ({
-      animal: newAnimal._id,
-      medicationDate: item.date,
-      medicationFor: item.description,
-   }));
+   await AnimalMedicationRecordModel.insertMany(
+      medRecords,
+      {session}
+   );
 
-   await MedHistoryModel.insertMany(medications, { session });
+   await AnimalVaccinationRecordModel.insertMany(
+      vaxRecords,
+      {session}
+   );
 
    return newAnimal;
 };

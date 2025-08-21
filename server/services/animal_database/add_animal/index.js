@@ -3,11 +3,9 @@ const addAnimal = require('./add_animal');
 const cloudinaryService = require('../../../services/cloudinary');
 const updateImgString = require('./insert_img_url');
 const insertActLog = require('../../activity_log');
-const { date } = require('joi');
 module.exports = async ({ animalData, user, imgFile }) => {
    const session = await mongoose.startSession();
    try {
-      console.log(animalData);
       session.startTransaction();
       let newAnimal = await addAnimal(session, animalData);
 
