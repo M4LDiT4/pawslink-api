@@ -58,13 +58,13 @@ module.exports = (mongoose, Schema) => {
       }
    );
 
-   schema.virtual(`vaccinations`, {
+   schema.virtual(`vaccinationRecords`, {
       ref: 'VaccinationRecord',
       localField: '_id',
       foreignField: `animal`,
    });
 
-   schema.virtual('medications', {
+   schema.virtual('medicationRecords', {
       ref: 'MedicationRecord',
       localField: '_id',
       foreignField: 'animal',
