@@ -21,15 +21,22 @@ module.exports = async (req, res, next) => {
          };
          return next();
       }
-
-      console.log(`user is ${JSON.stringify(req.user)}`);
       const body = req.body;
-      //parse to json the fields with list or json values
+      
       body.coatColor = JSON.parse(body.coatColor);
       body.notes = JSON.parse(body.notes);
+      if (body.traitsAndPersonality) {
       body.traitsAndPersonality = JSON.parse(body.traitsAndPersonality);
-      body.vaxHistory = JSON.parse(body.vaxHistory);
-      body.medHistory = JSON.parse(body.medHistory);
+      }
+
+      if (body.vaccinationRecords) {
+      body.vaccinationRecords = JSON.parse(body.vaccinationRecords);
+      }
+
+      if (body.medicationRecords) {
+      body.medicationRecords = JSON.parse(body.medicationRecords);
+      }
+
 
       const { error, value } = validator(body);
       if (error) {

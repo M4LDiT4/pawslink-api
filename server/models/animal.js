@@ -44,9 +44,14 @@ module.exports = (mongoose, Schema) => {
             type: [String],
             default: [],
          },
-         imgUrl: {
+         profileImage: {
             type: String,
          },
+         imgUrls: {
+            type: [String],
+            default: []
+         }
+
       },
       {
          timestamps: true,
@@ -54,13 +59,13 @@ module.exports = (mongoose, Schema) => {
    );
 
    schema.virtual(`vaccinations`, {
-      ref: 'Vaccination',
+      ref: 'VaccinationRecord',
       localField: '_id',
       foreignField: `animal`,
    });
 
    schema.virtual('medications', {
-      ref: 'Medication',
+      ref: 'MedicationRecord',
       localField: '_id',
       foreignField: 'animal',
    });
