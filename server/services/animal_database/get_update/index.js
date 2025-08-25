@@ -1,0 +1,1 @@
+const AnimalModel = require("../../../models").AnimalModel;

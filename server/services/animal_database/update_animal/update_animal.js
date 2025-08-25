@@ -1,8 +1,8 @@
 'use strict';
 
 const AnimalModel = require("../../../models").AnimalModel;
-const AnimalVaccinationRecordModel = require("../../../models").AnimalVaccinationRecordModel;
-const AnimalMedicationRecordModel = require("../../../models").AnimalMedicationRecodModel;
+const AnimalVaccinationRecordModel = require("../../../models").AnimalVaccinationRecord;
+const AnimalMedicationRecordModel = require("../../../models").AnimalMedicationRecord;
 
 module.exports = async (session, animalId, animalData) => {
    // 1. Update the base Animal
@@ -32,6 +32,9 @@ module.exports = async (session, animalId, animalData) => {
    async function mergeRecords(Model, newRecords) {
       if (!newRecords) return;
 
+      // keeps track of the ids
+      const newIds = [];
+
       for (const record of newRecords) {
          if (record._id) {
             // Update existing record
@@ -40,17 +43,18 @@ module.exports = async (session, animalId, animalData) => {
                { $set: { ...record } },
                { session }
             );
+            newIds.push(record._id.toString());
          } else {
             // Create new record
-            await Model.create(
+            const created = await Model.create(
                [{ ...record, animal: updatedAnimal._id }],
                { session }
             );
+            newIds.push(created[0]._id.toString()); 
          }
       }
 
       // (Optional) Remove records in DB not present in newRecords
-      const newIds = newRecords.filter(r => r._id).map(r => r._id.toString());
       await Model.deleteMany(
          { animal: updatedAnimal._id, _id: { $nin: newIds } },
          { session }
@@ -62,6 +66,5 @@ module.exports = async (session, animalId, animalData) => {
 
    // 3. Merge Medication Records
    await mergeRecords(AnimalMedicationRecordModel, animalData.medicationRecords);
-
    return updatedAnimal;
 };

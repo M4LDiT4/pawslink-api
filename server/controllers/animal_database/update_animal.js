@@ -34,7 +34,6 @@ module.exports = async (req, res, next) => {
          return next();
       }
       const animalData = body;
-      console.log(animalData);
       if(animalData.coatColor){
          animalData.coatColor = JSON.parse(animalData.coatColor);
       }

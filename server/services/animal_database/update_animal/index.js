@@ -4,6 +4,8 @@ const updateAnimal = require("./update_animal");
 const cloudinaryService = require("../../../services/cloudinary");
 const updateImgString = require("../add_animal/insert_img_url");
 const insertActLog = require("../../activity_log");
+
+const AnimalModel = require("../../../models").AnimalModel;
 module.exports = async ({animalData, id, user, imgFile}) => {
    const session = await mongoose.startSession();
    try{
@@ -29,8 +31,15 @@ module.exports = async ({animalData, id, user, imgFile}) => {
       await insertActLog(session, actLogData);
 
       await session.commitTransaction();
-      return updatedAnimal;
+      
+       const animalWithVirtuals = await AnimalModel.findById(updatedAnimal._id)
+         .populate("vaccinationRecords")
+         .populate("medicationRecords")
+         .session(session);
+
+      return animalWithVirtuals;
    }catch(err){
+      console.log(`Failed in update animal service: ${err}`);
       if(session.inTransaction){
          await session.abortTransaction();
       }
