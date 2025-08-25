@@ -23,7 +23,9 @@ module.exports = async ({ page, limit, sort, queryOptions }) => {
    const response = await AnimalModel.find(queryOptions)
       .sort(sort)
       .skip(skip) //number of documents to skip
-      .limit(limit);
+      .limit(limit)
+      .populate("vaccinationRecords")
+      .populate("medicationRecords");
    return {
       list: response,
       hasPrev: page > 1,
