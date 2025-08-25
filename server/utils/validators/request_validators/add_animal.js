@@ -39,7 +39,7 @@ const schema = joi.object({
       .default([]),
    vaccinationRecords: joi.array().items(
       joi.object({
-         vaccinaName: joi.string()
+         vaccineName: joi.string()
             .required(),
          dateGiven: joi.date()
             .required(),
