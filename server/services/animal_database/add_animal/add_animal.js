@@ -1,6 +1,9 @@
+`use strict`
 const AnimalModel = require('../../../models').AnimalModel;
 const AnimalMedicationRecordModel = require('../../../models').AnimalMedicationRecord;
 const AnimalVaccinationRecordModel = require('../../../models').AnimalVaccinationRecord;
+const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Types;
 /**
  * @module add_animal
  * @author Jonathan Calugas
@@ -20,6 +23,7 @@ const AnimalVaccinationRecordModel = require('../../../models').AnimalVaccinatio
  */
 module.exports = async (session, animalData) => {
    const animal = new AnimalModel({
+      _id: animalData.id ? new ObjectId(String(animalData.id)) : undefined,
       name: animalData.name,
       species: animalData.species,
       age: animalData.age,

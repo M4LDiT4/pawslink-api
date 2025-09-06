@@ -17,7 +17,6 @@ module.exports = async ({animalData, id, user, imgFile}) => {
             id,
             'animal_profiles'
          );
-
          updatedAnimal = await updateImgString(session, id, imgUrl);
       }
 
@@ -32,10 +31,10 @@ module.exports = async ({animalData, id, user, imgFile}) => {
 
       await session.commitTransaction();
       
-       const animalWithVirtuals = await AnimalModel.findById(updatedAnimal._id)
-         .populate("vaccinationRecords")
-         .populate("medicationRecords")
-         .session(session);
+      const animalWithVirtuals = await AnimalModel.findById(updatedAnimal._id)
+      .populate("vaccinationRecords")
+      .populate("medicationRecords")
+      .session(session);
 
       return animalWithVirtuals;
    }catch(err){

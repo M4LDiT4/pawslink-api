@@ -3,6 +3,7 @@
 const joi = require('joi');
 
 const schema = joi.object({
+   id: joi.string(),
    name: joi.string()
       .min(3)
       .max(30)
