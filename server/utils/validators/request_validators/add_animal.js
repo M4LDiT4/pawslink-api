@@ -23,6 +23,7 @@ const schema = joi.object({
       .required(),
    status: joi.string()
       .required(),
+   sterilizationDate: joi.date(), 
    coatColor: joi.array()
       .items(
          joi.string()
