@@ -7,6 +7,7 @@
  *
  * process flow: initialize data storage -> initialize server
  */
+require('dotenv').config();
 
 const config = require('./config');
 const chalk = require('chalk');

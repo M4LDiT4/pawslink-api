@@ -15,5 +15,6 @@ module.exports = {
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
    },
-   dbUri: `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.h10enh5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`,
+   // dbUri: `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.h10enh5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`,
+   dbUri: process.env.DB_URI
 };
